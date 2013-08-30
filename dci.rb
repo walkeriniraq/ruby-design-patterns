@@ -10,10 +10,6 @@ end
 module DciViaDelegate
   class TransferContext
     class FromAccount < SimpleDelegator
-      def initialize(from)
-        super
-      end
-
       def withdraw(amount)
         raise 'Amount exceeds balance' if amount > balance
         self.balance -= amount
@@ -21,10 +17,6 @@ module DciViaDelegate
     end
 
     class ToAccount < SimpleDelegator
-      def initialize(from)
-        super
-      end
-
       def deposit(amount)
         self.balance += amount
       end
